@@ -6,7 +6,8 @@ import graph_import
 
 def main():
     # Import fb graph
-    graph = graph_import.gen_graph('yt')
+    
+    graph = graph_import.gen_graph('random')
 
     print("Number of Nodes: ", graph.order())
     print("Number of Edges: ", graph.number_of_edges())

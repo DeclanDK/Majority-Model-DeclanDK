@@ -2,6 +2,8 @@
 
 """Libraries necessary to import the graphs"""
 import networkx as nx
+import numpy as np
+import matplotlib.pyplot as plt
 
 """ Set filepath strings to callable variables """
 fb = "./datasets/facebook-links.txt"
@@ -11,7 +13,7 @@ yt = "./datasets/youtube-links.txt"
 
 """ Function to generate graphs of datasets using networkx """
 
-def gen_graph(ds):
+def gen_graph(ds, n = None):
     if (ds == 'fb'):
         graph = nx.Graph()
     
@@ -56,9 +58,30 @@ def gen_graph(ds):
                 x, y = line.split()
 
                 graph.add_edge(int(x), int(y))
+        # Generate a random graph, using n as number of nodes with random edges.
+        # If n = None, create graph of n = 100
+    elif (ds == 'random'):
+        # Make sure n is correctly inputed if a value is given
+        if (n != None and type(n) != int):
+            raise ValueError("n must be an integer")
+        
+        # Generate n and m values for random graph
+
+        if n == None:
+            n = 100
+            m = np.random.randint(1, 4950)
+        else:
+            m = np.random.randint(1, (n*(n-1)//2))
+        
+        graph = nx.gnm_random_graph(n, m)
+
+        pos = nx.spring_layout(graph)
+
+        nx.draw_networkx(graph, pos, with_labels=True)
+        plt.show()
 
     else:
-        raise ValueError("Invalid dataset, must be 'fb', 'sd', 'tw' or 'yt'")
+        raise ValueError("Invalid dataset, must be 'fb', 'sd', 'tw', 'yt' or 'random'")
     
     return graph
 
