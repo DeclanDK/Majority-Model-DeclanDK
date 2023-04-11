@@ -75,13 +75,14 @@ def gen_graph(ds, n = None):
         
         graph = nx.gnm_random_graph(n, m)
 
-        pos = nx.spring_layout(graph)
-
-        nx.draw_networkx(graph, pos, with_labels=True)
-        plt.show()
-
     else:
         raise ValueError("Invalid dataset, must be 'fb', 'sd', 'tw', 'yt' or 'random'")
     
+    # Assign colours to graph
+
+    for node_id in  graph.nodes():
+        colour = 'red' if np.random.rand() < 0.5 else 'blue'
+        graph.nodes[node_id]["colour"] = colour 
+
     return graph
 
