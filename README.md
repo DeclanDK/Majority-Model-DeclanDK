@@ -1,8 +1,13 @@
+To Do:
 Run Majority Model, w/ some initial colouring and graph, returns # of black ndoes/how long it took at some point of convergence (static or blinking). - Done
 
-New graph at each iteration. - Donwe
+New graph at each iteration. - Done
 
-Implement adversary at the beginning. 
+Implement adversary at the beginning. - Done
+
+Display graphs with data.
+
+Notes:
 
 Adversary has a set of tools and an objective. Each has a real world similarity.
 
