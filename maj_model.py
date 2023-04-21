@@ -11,7 +11,7 @@ import marketer
 
 def maj_mod(G, adv = False, k = 5):
     if adv:
-        G = marketer.greedy_adversary(G, k)
+       G = marketer.greedy_adversary(G, k)
 
     old_G, new_G = gu.graph_update(G)
     iter = 1
@@ -22,9 +22,9 @@ def maj_mod(G, adv = False, k = 5):
         iter += 1
 
         if nx.is_isomorphic(old_G, new_G,):
-            print("Stab - # of Rounds: ", iter)
+            #print("Stab - # of Rounds: ", iter)
             return new_G
         
         elif nx.is_isomorphic(older_G, new_G):
-            print("Alternating - # of Rounds: ", iter)
+            #print("Alternating - # of Rounds: ", iter)
             return new_G

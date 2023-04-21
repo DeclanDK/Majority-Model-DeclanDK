@@ -3,12 +3,13 @@ import numpy as np
 import networkx as nx
 import graph_import
 
-def node_update(old_graph, node_id):
-    blue_neighbors = sum([1 for neighbour_id in old_graph.neighbors(node_id) if old_graph.nodes[neighbour_id]["colour"] == 'blue'])
-    red_neighbours = sum([1 for neighbour_id in old_graph.neighbors(node_id) if old_graph.nodes[neighbour_id]["colour"] == 'red'])
+def node_update(graph, node_id):
+    #print(graph.nodes[node_id])
+    blue_neighbors = sum([1 for neighbour_id in graph.neighbors(node_id) if graph.nodes[neighbour_id]["colour"] == 'blue'])
+    red_neighbours = sum([1 for neighbour_id in graph.neighbors(node_id) if graph.nodes[neighbour_id]["colour"] == 'red'])
 
     if blue_neighbors == red_neighbours:
-        return str(old_graph.nodes[node_id]["colour"])
+        return str(graph.nodes[node_id]["colour"])
     elif blue_neighbors > red_neighbours:
         return 'blue'
     else:

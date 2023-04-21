@@ -5,12 +5,39 @@ import graph_import as gi
 import maj_model as mm
 import matplotlib.pyplot as plt 
 
-graph = gi.gen_graph('random', 100)
+x_axis = [5,6,7,8,9]
+y_axis = []
 
-print("Number of Nodes: ", graph.order())
-print("Number of Edges: ", graph.number_of_edges())
+for k in range(5,10):
+    count = 0
+    for i in range(20):
+        graph = gi.gen_graph('random', 1000)
 
-fin_graph = mm.maj_mod(graph, adv = True)
+        fin_graph = mm.maj_mod(graph, adv = True, k = k)
+
+        # Add the final number  of blue nodes to the count variable
+        count += sum([1 for node_id in fin_graph.nodes if fin_graph.nodes[node_id]["colour"] == 'blue'])
+
+    y_axis.append(count//20)
+
+plt.figure(figsize=(15,15))
+
+ax = plt.axes()
+
+plt.plot(x_axis, y_axis,'bo')
+plt.xlabel("Budget - k")
+plt.ylabel("Final # of Blue Nodes")
+        
+plt.title("Scatter plot")
+
+plt.show()
+
+#graph = gi.gen_graph('fb', 100)
+
+#print("Number of Nodes: ", graph.order())
+#print("Number of Edges: ", graph.number_of_edges())
+
+#fin_graph = mm.maj_mod(graph, adv = True, k= 5)
 
 # Draw graphs
 # fig, axs = plt.subplots(ncols=2)

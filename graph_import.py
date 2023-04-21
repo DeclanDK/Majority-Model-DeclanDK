@@ -1,6 +1,6 @@
-"""Module to import datasets"""
+""" Module to import datasets """
 
-"""Libraries necessary to import the graphs"""
+""" Libraries necessary to import the graphs """
 import networkx as nx
 import numpy as np
 import matplotlib.pyplot as plt
@@ -24,7 +24,6 @@ def gen_graph(ds, n = None):
                 x, y, _ = line.split()
 
                 graph.add_edge(int(x), int(y))
-        return graph
     
     elif (ds == 'sd'):
           graph = nx.Graph()
@@ -80,7 +79,7 @@ def gen_graph(ds, n = None):
     
     # Assign colours to graph
 
-    for node_id in  graph.nodes():
+    for node_id in graph.nodes():
         colour = 'red' if np.random.rand() < 0.5 else 'blue'
         graph.nodes[node_id]["colour"] = colour 
 
